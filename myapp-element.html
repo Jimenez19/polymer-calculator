@@ -1,0 +1,225 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+
+<dom-module id="myapp-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <span id="cuenta">{{display}}</span>
+    <table style="">
+      <tr>
+        <th>
+          <button type="button" id="seven-btn" on-click="numberbtn"> 7</button>
+        </th>
+        <th>
+          <button type="button" id="eight-btn" on-click="numberbtn"> 8</button>
+        </th>
+        <th>
+          <button type="button" id="nine-btn" on-click="numberbtn"> 9</button>
+        </th>
+        <th>
+          <button type="button" id="slash-btn" on-click="operatorbtn"> /</button>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <button type="button" id="seven-btn" on-click="numberbtn"> 4</button>
+        </th>
+        <th>
+          <button type="button" id="five-btn" on-click="numberbtn"> 5</button>
+        </th>
+        <th>
+          <button type="button" id="six-btn" on-click="numberbtn"> 6</button>
+        </th>
+        <th>
+          <button type="button" id="multiply-btn" on-click="operatorbtn">*</button>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <button type="button" id="one-btn" on-click="numberbtn">1</button>
+        </th>
+        <th>
+          <button type="button" id="two-btn" on-click="numberbtn">2</button>
+        </th>
+        <th>
+          <button type="button" id="three-btn" on-click="numberbtn">3</button>
+        </th>
+        <th>
+          <button type="button" id="minus-btn" on-click="operatorbtn">-</button>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <button type="button" id="seven-btn" on-click="pointbtn"> .</button>
+        </th>
+        <th>
+          <button type="button" id="zero-btn" on-click="numberbtn"> 0</button>
+        </th>
+        <th>
+          <button type="button" id="equal-btn" on-click="equalbtn"> =</button>
+        </th>
+        <th>
+          <button type="button" id="plus-btn" on-click="operatorbtn"> +</button>
+        </th>
+      </tr>
+    </table>
+  </template>
+
+  <script>
+    /**
+     * `myapp-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MyappElement extends Polymer.Element {
+      static get is() {
+        return 'myapp-element';
+      }
+      static get properties() {
+        return {
+          operando1: {
+            type: Number,
+            value: 0,
+            readonly: false
+          },
+          operando2: {
+            type: Number,
+            value: 0,
+            readonly: false
+          },
+          operador: {
+            type: String,
+            value: '',
+            readonly: false
+          },
+          status: {
+            type: Number,
+            value: 0,
+            readonly: false
+          },
+          display: {
+            type: String,
+            value: '0',
+            readonly: true
+          }
+
+        };
+      }
+      numberbtn(val) {
+        if (val.target.id == 'nine-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 9;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 9;
+          }
+        } else if (val.target.id == 'eight-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 8;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 8;
+          }
+        } else if (val.target.id == 'seven-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 7;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 7;
+          }
+        } else if (val.target.id == 'six-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 6;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 6;
+          }
+        } else if (val.target.id == 'five-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 5;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 5;
+          }
+        } else if (val.target.id == 'four-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 4;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 4;
+          }
+        } else if (val.target.id == 'three-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 3;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 3;
+          }
+        } else if (val.target.id == 'two-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 2;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 2;
+          }
+        } else if (val.target.id == 'one-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 1;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 1;
+          }
+        } else if (val.target.id == 'zero-btn') {
+          if (this.status == 0) {
+            this.operando1 = this.operando1 * 10 + 0;
+          } else if (this.status == 1) {
+            this.operando2 = this.operando2 * 10 + 0;
+          }
+        }
+        console.log(this.operando1);
+        console.log(this.operando2);
+        console.log(this.operador);
+        if (this.status == 0) {
+          this.display = this.operando1;
+        } else if (this.status == 1) {
+          this.display = this.operando1 + this.operador + this.operando2;
+        }
+      }
+      operatorbtn(val) {
+        if (val.target.id == 'slash-btn') {
+          this.operador = '/'
+        } else if (val.target.id == 'multiply-btn') {
+          this.operador = '*'
+        } else if (val.target.id == 'plus-btn') {
+          this.operador = '+'
+        } else if (val.target.id == 'minus-btn') {
+          this.operador = '-'
+        }
+        this.display = this.operando1 + this.operador;
+        this.status = 1;
+      }
+      equalbtn() {
+        let result = 0;
+        if (this.operador == '/') {
+          result = this.operando1 / this.operando2;
+        } else if (this.operador == '*') {
+          result = this.operando1 * this.operando2;
+        } else if (this.operador == '-') {
+          result = this.operando1 - this.operando2;
+        } else if (this.operador == '+') {
+          result = this.operando1 + this.operando2;
+        }
+        this.display = this.operando1 + this.operador + this.operando2 + '=' + result;
+        this.operando1 = 0;
+        this.operando2 = 0;
+        this.result = 0;
+        this.operador = '';
+        this.status = 0;
+      }
+
+      pointbtn(){
+        if(this.status == 0) this.status = 2;
+        if(this.status == 1) this.status = 3;
+      }
+    }
+
+    window.customElements.define(MyappElement.is, MyappElement);
+  </script>
+</dom-module>
